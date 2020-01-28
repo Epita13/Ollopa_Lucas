@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dirt.png-aee3cd68f1541e7f4607326ed5b194af.stex"
+path="res://.import/astronaute.png-aad58a656194623cbccc1936b76cfda3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Ressources/Imgs/dirt.png"
-dest_files=[ "res://.import/dirt.png-aee3cd68f1541e7f4607326ed5b194af.stex" ]
+source_file="res://Assets/Ressources/Imgs/Joueur/astronaute.png"
+dest_files=[ "res://.import/astronaute.png-aad58a656194623cbccc1936b76cfda3.stex" ]
 
 [params]
 
