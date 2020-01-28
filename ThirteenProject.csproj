@@ -49,6 +49,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Objects\Buildings\CareBuilding\CareBuilding.cs" />
     <Compile Include="Assets\Objects\Buildings\Rafinery\Rafinery.cs" />
     <Compile Include="Assets\Objects\Buildings\SolarPanel\SolarPanel.cs" />
     <Compile Include="Assets\Objects\Player\PlayerMouvements.cs" />
