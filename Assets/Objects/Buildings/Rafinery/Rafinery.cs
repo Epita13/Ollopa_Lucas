@@ -7,22 +7,23 @@ public class Rafinery : Building
 	....
 	*/
 
-	protected int oil;
-	protected int fuel;
-	private int capacity;
+	protected float oil;
+	protected float fuel;
+	private float capacity;
+	public static float rate = 5.0f
 
 	private Timer timer;
 
 	public Rafinery() : base (100)
 	{
-		this.oil = 0;
+		this.oil = 100;
 		this.fuel = 0;
 		this.capacity = 3000;
 		
 	}
 
 	///...
-	public void AddOil(int amount)
+	public void AddOil(float amount)
 	{
 		oil += amount;
 		if (oil > capacity)
@@ -34,6 +35,7 @@ public class Rafinery : Building
 
 	public override void _EnterTree()
 	{
+		isPlaced = true;
 		timer = GetNode<Timer>("Timer");
 	}
 
@@ -43,14 +45,14 @@ public class Rafinery : Building
 	*/
 	public void _on_Timer_timeout()
 	{
-		if (isPlaced && oil >= 10)
+		if (isPlaced && oil >= rate)
 		{
-			fuel += 2;
-			oil-= 10;
+			fuel += 1;
+			oil-= 5;
 		}
 	}
 
-	public void Remove_Fuel(int amount)
+	public void Remove_Fuel(float amount)
 	{
 		fuel -= amount;
 		if (fuel < 0)
