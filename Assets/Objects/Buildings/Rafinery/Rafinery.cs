@@ -9,7 +9,6 @@ public class Rafinery : Building
 
 	protected int oil;
 	protected int fuel;
-	protected int OilInMachine;
 	private int capacity;
 
 	private Timer timer;
@@ -18,21 +17,17 @@ public class Rafinery : Building
 	{
 		this.oil = 0;
 		this.fuel = 0;
-		this.capacity = 5000;
-		this.OilInMachine = 0;
+		this.capacity = 3000;
+		
 	}
 
 	///...
-	public void AddOil (int oil)
+	public void AddOil(int amount)
 	{
-		if (oil <= capacity)
+		oil += amount;
+		if (oil > capacity)
 		{
-			if (oil + OilInMachine <= capacity)
-			{
-				OilInMachine += oil;
-			}
-			OilInMachine = capacity;
-			oil -= capacity;
+			oil = capacity;
 		}
 	}
 
@@ -48,10 +43,19 @@ public class Rafinery : Building
 	*/
 	public void _on_Timer_timeout()
 	{
-		if (OilInMachine >= 10)
+		if (isPlaced && oil >= 10)
 		{
 			fuel += 2;
-			OilInMachine -= 10;
+			oil-= 10;
+		}
+	}
+
+	public void Remove_Fuel(int amount)
+	{
+		fuel -= amount;
+		if (fuel < 0)
+		{
+			fuel = 0;
 		}
 	}
 }
