@@ -1,68 +1,57 @@
 using Godot;
 using System;
 
-public class Rafinery : Building.cs
+public class Rafinery : Building
 {
+	/*
+	....
+	*/
 
-protected int oil;
-protected int fuel;
-protected int OilInMachine;
-private int capacity;
+	protected int oil;
+	protected int fuel;
+	protected int OilInMachine;
+	private int capacity;
 
+	private Timer timer;
 
-public Rafinery ()
-{
-	this.oil = 0;
-	this.fuel = 0;
-	this.capacity = 5000;
-	this.OilInMachine = 0;
-}
-
-public void AddOil (int oil)
-{
-	if (oil <= capacity)
+	public Rafinery() : base (100)
 	{
-		if (oil + OilInMachine <= capacity)
+		this.oil = 0;
+		this.fuel = 0;
+		this.capacity = 5000;
+		this.OilInMachine = 0;
+	}
+
+	///...
+	public void AddOil (int oil)
+	{
+		if (oil <= capacity)
 		{
-			OilInMachine += oil;
+			if (oil + OilInMachine <= capacity)
+			{
+				OilInMachine += oil;
+			}
+			OilInMachine = capacity;
+			oil -= capacity;
 		}
-		OilInMachine = capacity
-		oil -= capacity;
 	}
-}
 
 
-public override void _Process (float delta)
-{
-	if (OilInMachine >= 10)
+	public override void _EnterTree()
 	{
-		fuel += 2;
-		OilInMachine -= 10;
+		timer = GetNode<Timer>("Timer");
 	}
-}
-
-public void IsPlaced()
-{
-	 return IsPlaced.Place(location);
-}
 
 
-
-
-
-
-
-
-    public override void _Ready()
-    {
-
-    }
-
-
-
-
-
-
-
-
+	/* Equivalent a la fonction _Process
+		delta => timer.WaitTime
+	*/
+	public void _on_Timer_timeout()
+	{
+		if (OilInMachine >= 10)
+		{
+			fuel += 2;
+			OilInMachine -= 10;
+		}
+	}
 }
