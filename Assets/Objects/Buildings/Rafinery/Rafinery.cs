@@ -1,5 +1,7 @@
-using Godot;
 using System;
+using System.Threading;
+using Godot;
+using Timer = Godot.Timer;
 
 public class Rafinery : Building
 {
@@ -10,16 +12,15 @@ public class Rafinery : Building
 	protected float oil;
 	protected float fuel;
 	private float capacity;
-	public static float rate = 5.0f
+	public static float rate = 5.0f;
 
 	private Timer timer;
 
 	public Rafinery() : base (100)
 	{
-		this.oil = 100;
+		this.oil = 53;
 		this.fuel = 0;
 		this.capacity = 3000;
-		
 	}
 
 	///...
@@ -45,10 +46,17 @@ public class Rafinery : Building
 	*/
 	public void _on_Timer_timeout()
 	{
+		var T = timer.WaitTime;
 		if (isPlaced && oil >= rate)
 		{
-			fuel += 1;
-			oil-= 5;
+			fuel += 1 * T;
+			oil -= 5 * T;
+		}
+
+		if (isPlaced && oil < rate)
+		{
+			fuel += oil / rate;
+			oil = 0;
 		}
 	}
 
