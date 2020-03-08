@@ -18,8 +18,8 @@ public class Rafinery : Building
 
 	public Rafinery() : base (100)
 	{
-		this.oil = 53;
-		this.fuel = 0;
+		this.oil = oil;
+		this.fuel = fuel;
 		this.capacity = 3000;
 	}
 
