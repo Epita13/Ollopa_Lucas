@@ -18,18 +18,21 @@ public class Rafinery : Building
 
 	public Rafinery() : base (100)
 	{
-		this.oil = oil;
-		this.fuel = fuel;
+		this.oil = 0;
+		this.fuel = 0;
 		this.capacity = 3000;
 	}
 
-	///...
-	public void AddOil(float amount)
+	/// permet d'ajouter Oil a la machine.
+	public void AddOil(float amount, Liquid.Type type)
 	{
-		oil += amount;
-		if (oil > capacity)
+		if (type == Liquid.Type.Oil)
 		{
-			oil = capacity;
+			oil += amount;
+			if (oil > capacity)
+			{
+				oil = capacity;
+			}
 		}
 	}
 
@@ -60,6 +63,7 @@ public class Rafinery : Building
 		}
 	}
 
+	// retire du fuel de la machine
 	public void Remove_Fuel(float amount)
 	{
 		fuel -= amount;
