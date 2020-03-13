@@ -9,10 +9,11 @@ public class Rafinery : Building
 	....
 	*/
 
-	protected float oil;
-	protected float fuel;
+	private float fuel;
+	private float oil;
 	private float capacity;
-	public static float rate = 5.0f;
+	private static float rate = 5.0f;
+
 
 	private Timer timer;
 
@@ -23,7 +24,7 @@ public class Rafinery : Building
 		this.capacity = 3000;
 	}
 
-	/// permet d'ajouter Oil a la machine.
+	
 	public void AddOil(float amount, Liquid.Type type)
 	{
 		if (type == Liquid.Type.Oil)
@@ -49,7 +50,7 @@ public class Rafinery : Building
 	*/
 	public void _on_Timer_timeout()
 	{
-		var T = timer.WaitTime;
+		float T = timer.WaitTime;
 		if (isPlaced && oil >= rate)
 		{
 			fuel += 1 * T;
